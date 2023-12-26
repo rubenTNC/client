@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    font-size: 20px;
+    background-color: #1976d2;
+    border-radius: 5px;
+    color: rgb(247, 250, 253);
+}
+
+.logo {
+    font-size: 22px;
+}
+
+.autch {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
