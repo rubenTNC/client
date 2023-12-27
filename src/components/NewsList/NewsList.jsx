@@ -14,7 +14,7 @@ export const NewsList = () => {
   }, dispatch, loading)
 
   return (
-    <Box sx={{maxWidth:"80%"}}>
+    <Box sx={{maxWidth:{sm:"75%"}}}>
       <Typography variant="h4" >News</Typography>
       <Box sx={{marginTop:"50px", display: "flex", flexDirection:"column", gap:"20px"}}>
         {

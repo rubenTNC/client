@@ -56,7 +56,7 @@ export function Navbar() {
   const isUser = useSelector((state) => state.auth.user)
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ borderRadius: "9px" }}>
+      <AppBar position="static" sx={{ borderRadius: {sm: "9px"} }}>
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Typography
             variant="h5"

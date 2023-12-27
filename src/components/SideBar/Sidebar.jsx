@@ -1,10 +1,11 @@
 import React from 'react'
 import {styles} from "./sidebar.modules.css"
+import { Box, Typography } from '@mui/material'
 
 export const Sidebar = () => {
   return (
-    <div className='sidebar'>
-      <h3 className='news__title block-title'>Language</h3>
-    </div>
+    <Box sx={{display: {xs:"none", sm: "block"}}}>
+      <Typography variant='h5'>Language</Typography>
+    </Box>
   )
 }
