@@ -100,7 +100,7 @@ export function Navbar() {
               </Typography>
               <Typography variant="h6">
               <div className="autch">
-              <Link to={"/login"}>Войти</Link>{" "}
+              <Link to={"/login"}>Войти</Link>
             </div>
             </Typography>
             </Box>
