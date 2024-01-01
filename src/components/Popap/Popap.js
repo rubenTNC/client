@@ -13,9 +13,40 @@ export const Popap = () => {
   const handleToggle = () => {
     dispatch(toggleActive())
   };
-  useEffect(()=> {
-    console.log(activ)
-  },activ)
+
+  const styleNotActive = {
+    position: "absolute",
+    top: "-200px",
+    left: "-200%",
+    width:"100%",
+    backgroundColor: "black",
+    opacity:"0.8",
+    zIndex:"1",
+    transitionDuration:"2s",
+    padding: "5px 10px",
+    borderRadius: "5px",
+    display:"flex",
+    flexDirection:"column",
+    gap:" 20px"
+  }
+
+  const styleActive = {
+    position: "absolute",
+    top: "55px",
+    left: "0px",
+    width:"100%",
+    backgroundColor: "black",
+    opacity:"0.8",
+    zIndex:"1",
+    transitionDuration:"2s",
+    padding: "5px 10px",
+    borderRadius: "5px",
+    display:"flex",
+    flexDirection:"column",
+    gap:" 20px"
+  }
+
+  const style = activ ? styleActive : styleNotActive
 
   return (
     <Box>
@@ -29,8 +60,27 @@ export const Popap = () => {
       >
         <MenuIcon />
       </IconButton>
-      {activ && (
-        <Box>
+          <Box
+            sx={style }
+          >
+            <Typography variant="h6">
+              <div className="autch">
+                <Link to={"/"}>Главная</Link>{" "}
+              </div>
+            </Typography>
+            <Typography variant="h6">
+              <div className="autch">
+                <Link to={"/register"}>Регистрация</Link>{" "}
+              </div>
+            </Typography>
+            <Typography variant="h6">
+              <div className="autch">
+                <Link to={"/login"}>Войти</Link>
+              </div>
+            </Typography>
+          </Box>
+      
+      {/* {activ && (
           <Box
             sx={{
               position: "absolute",
@@ -61,8 +111,7 @@ export const Popap = () => {
               </div>
             </Typography>
           </Box>
-        </Box>
-      )}
+      )} */}
     </Box>
   );
 };
