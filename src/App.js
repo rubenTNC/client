@@ -9,6 +9,7 @@ import { FullNews } from "./pages/id/FullNews.jsx";
 
 
 function App() {
+  
   return (
     <Layout>
       <Routes>

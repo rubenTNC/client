@@ -13,7 +13,7 @@ export const News = ({props}) => {
       <Box sx={{display:{sm:"flex", xs:"none"}, gap:"20px",flexWrap:"wrap",marginTop:"15px"}}>
         {
           props.tags?.map((tag) => (
-            <Typography sx={{padding:"0px 5px", border:"1px solid black", borderRadius:"5px", cursor:"pointer"}}>{tag}</Typography>
+            <Typography sx={{padding:"0px 5px", border:"1px solid black", borderRadius:"5px", cursor:"pointer", fontSize:"12px"}}>{tag}</Typography>
           ))
         }
       </Box>
