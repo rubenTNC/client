@@ -46,6 +46,7 @@ export const newsSlice = createSlice({
         })
         .addCase(getFullNews.pending, (state, action) => {
           state.loading = true
+          state.fullNews = null
         })
         .addCase(getNewsAll.fulfilled, (state, action) => {
           state.loading = false;

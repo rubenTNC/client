@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import Link from "@mui/material/Link";
@@ -9,7 +8,6 @@ import Container from "@mui/material/Container";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import TextField from "@mui/material/TextField";
-import AddHomeWorkIcon from "@mui/icons-material/AddHomeWork";
 import CssBaseline from "@mui/material/CssBaseline";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 
@@ -51,9 +49,6 @@ export function LoginPage() {
             name="username"
             autoComplete="username"
             autoFocus
-            onInput={() => {
-              console.log("dfgdfg")
-            }}
           />
           <TextField
             variant="outlined"
@@ -66,7 +61,7 @@ export function LoginPage() {
             id="password"
             autoComplete="current-password"
           />
-          <Button variant="contained" fullWidth="true" sx={{display:"block", minHeight:"45px", mt: "20px", fontSize: "20px"}}>Войти</Button>
+          <Button variant="contained"  sx={{display:"block", minHeight:"45px", mt: "20px", fontSize: "20px", width:"100%"}}>Войти</Button>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Запомнить меня"
@@ -81,9 +76,6 @@ export function LoginPage() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

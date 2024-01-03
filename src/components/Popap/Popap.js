@@ -3,53 +3,68 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Box, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {toggleActive} from "../../redux/features/popap/popupSlice"
-import { useEffect } from "react";
+import { toggleActive } from "../../redux/features/popap/popupSlice";
+import CloseIcon from "@mui/icons-material/Close";
 
 export const Popap = () => {
-  const dispatch = useDispatch()
-  const activ = useSelector((state) => state.popup.activ)
+  const dispatch = useDispatch();
+  const activ = useSelector((state) => state.popup.activ);
 
   const handleToggle = () => {
-    dispatch(toggleActive())
+    dispatch(toggleActive());
   };
+
+  const menuItems = [
+    {
+      name: "Главная",
+      url: "/",
+    },
+    {
+      name: "Регистрация",
+      url: "/register",
+    },
+    {
+      name: "Войти",
+      url: "/login",
+    },
+  ];
 
   const styleNotActive = {
     position: "absolute",
-    top: "-200px",
+    top: "0px",
     left: "-200%",
-    width:"100%",
+    width: "100%",
     backgroundColor: "black",
-    opacity:"0.8",
-    zIndex:"1",
-    transitionDuration:"2s",
+    opacity: "0.8",
+    zIndex: "1",
+    transitionDuration: "1s",
     padding: "5px 10px",
     borderRadius: "5px",
-    display:"flex",
-    flexDirection:"column",
-    gap:" 20px"
-  }
+    display: "flex",
+    flexDirection: "column",
+    gap: " 20px",
+  };
 
   const styleActive = {
     position: "absolute",
-    top: "55px",
+    top: "0px",
     left: "0px",
-    width:"100%",
+    width: "100%",
     backgroundColor: "black",
-    opacity:"0.8",
-    zIndex:"1",
-    transitionDuration:"2s",
+    opacity: "0.8",
+    zIndex: "1",
+    transitionDuration: "1s",
     padding: "5px 10px",
     borderRadius: "5px",
-    display:"flex",
-    flexDirection:"column",
-    gap:" 20px"
-  }
+    display: "flex",
+    flexDirection: "column",
+    gap: " 20px",
+  };
 
-  const style = activ ? styleActive : styleNotActive
+  const style = activ ? styleActive : styleNotActive;
 
   return (
-    <Box>
+    <Box >
       <IconButton
         size="large"
         edge="start"
@@ -60,58 +75,19 @@ export const Popap = () => {
       >
         <MenuIcon />
       </IconButton>
-          <Box
-            sx={style }
-          >
-            <Typography variant="h6">
-              <div className="autch">
-                <Link to={"/"}>Главная</Link>{" "}
-              </div>
-            </Typography>
-            <Typography variant="h6">
-              <div className="autch">
-                <Link to={"/register"}>Регистрация</Link>{" "}
-              </div>
-            </Typography>
-            <Typography variant="h6">
-              <div className="autch">
-                <Link to={"/login"}>Войти</Link>
-              </div>
-            </Typography>
-          </Box>
-      
-      {/* {activ && (
-          <Box
-            sx={{
-              position: "absolute",
-              top: "55px",
-              left: "0",
-              right: "0",
-              backgroundColor: "black",
-              opacity:"0.8",
-              zIndex:"1",
-              transitionDuration:"1s",
-              padding: "5px 10px",
-              borderRadius: "5px",
-            }}
-          >
-            <Typography variant="h6">
-              <div className="autch">
-                <Link to={"/"}>Главная</Link>{" "}
-              </div>
-            </Typography>
-            <Typography variant="h6">
-              <div className="autch">
-                <Link to={"/register"}>Регистрация</Link>{" "}
-              </div>
-            </Typography>
-            <Typography variant="h6">
-              <div className="autch">
-                <Link to={"/login"}>Войти</Link>
-              </div>
-            </Typography>
-          </Box>
-      )} */}
+      <Box sx={style}>
+        <CloseIcon
+          sx={{ position: "absolute", right: "30px", top: "10px" }}
+          onClick={handleToggle}
+        />
+        {menuItems?.map((item) => (
+          <Typography key={item.name} variant="h6" onClick={handleToggle}>
+            <div className="autch">
+              <Link to={item.url}>{item.name}</Link>{" "}
+            </div>
+          </Typography>
+        ))}
+      </Box>
     </Box>
   );
 };
