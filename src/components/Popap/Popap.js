@@ -5,16 +5,27 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleActive } from "../../redux/features/popap/popupSlice";
 import CloseIcon from "@mui/icons-material/Close";
+import { logout } from "../../redux/features/auth/authSlice";
 
 export const Popap = () => {
   const dispatch = useDispatch();
   const activ = useSelector((state) => state.popup.activ);
+  const user = useSelector((state) => state.auth.user);
+
+
+  const city = JSON.parse(localStorage.getItem("position")).city
 
   const handleToggle = () => {
     dispatch(toggleActive());
   };
 
-  const menuItems = [
+  const handleLogout = () => {
+    dispatch(logout())
+    handleToggle()
+    localStorage.removeItem('token');
+  }
+
+  const notUserMenuItems = [
     {
       name: "Главная",
       url: "/",
@@ -28,6 +39,20 @@ export const Popap = () => {
       url: "/login",
     },
   ];
+
+  const userMenuItems = [
+    {
+      name: user ? user.username : "",
+      url: "/myPage"
+
+    },
+    {
+      name: "Главная",
+      url: "/",
+    }
+  ]
+
+  const menuItems = user ? userMenuItems : notUserMenuItems
 
   const styleNotActive = {
     position: "absolute",
@@ -80,6 +105,11 @@ export const Popap = () => {
           sx={{ position: "absolute", right: "30px", top: "10px" }}
           onClick={handleToggle}
         />
+        {
+          city && (
+            <Typography variant="h6">{city}</Typography>
+          )
+        }
         {menuItems?.map((item) => (
           <Typography key={item.name} variant="h6" onClick={handleToggle}>
             <div className="autch">
@@ -87,6 +117,13 @@ export const Popap = () => {
             </div>
           </Typography>
         ))}
+        {
+          user && (
+            <Typography variant="h6" onClick={handleLogout} sx={{cursor: "pointer"}}>
+              Выйти
+            </Typography>
+          )
+        }
       </Box>
     </Box>
   );

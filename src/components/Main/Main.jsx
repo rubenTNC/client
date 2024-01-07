@@ -18,10 +18,10 @@ export const Main = () => {
       >
         News+language
       </Typography>
-      <div className="main__body">
+      <Box sx={{display:"flex", gap:" 10px"}}>
         <NewsList></NewsList>
         <Sidebar></Sidebar>
-      </div>
+      </Box>
     </Box>
   );
 };

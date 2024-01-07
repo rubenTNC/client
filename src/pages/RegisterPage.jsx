@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import Link from "@mui/material/Link";
@@ -10,25 +10,42 @@ import CssBaseline from "@mui/material/CssBaseline";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import { registerUser } from "../redux/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const RegisterPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const isUser = useSelector((state) => state.auth.user)
+  const status = useSelector((state) => state.auth.status);
+  const eroors = useSelector((state) => state.auth.eroors);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(eroors) {
+      for(let eroor of eroors) {
+        toast(eroor.msg);
+      }
+    }
+    if (status) {
+      toast(status);
+    }
+    if (user) {
+      navigate("/");
+    }
+  }, [status, user, eroors]);
+
   const handleSubmit = async () => {
-    dispatch(registerUser({username, email, password}));
+    dispatch(registerUser({ username, email, password }));
     setUsername("");
     setEmail("");
     setPassword("");
-    navigate('/')
   };
 
   return (
-    <Container sx={{ mt: "50px" }} component="main" maxWidth="xs">
+    <Container sx={{ mt: "50px", height:"100vh" }} component="main" maxWidth="xs" >
       <CssBaseline />
       <div>
         <Box sx={{ textAlign: "center" }}>
@@ -92,7 +109,7 @@ export const RegisterPage = () => {
               minHeight: "45px",
               mt: "20px",
               fontSize: "20px",
-              width: "100%"
+              width: "100%",
             }}
             onClick={handleSubmit}
           >

@@ -9,8 +9,15 @@ const initialState = {
 
 export const getNewsAll = createAsyncThunk(
   "news/all",
-  async()=> {
-    const data = await fetch("http://localhost:8080/news/all")
+  async(count)=> {
+    const data = await fetch("http://localhost:8080/news/all", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+        "countnews": count
+      },
+    }
+    )
     const res = await data.json()
     return res
   }
@@ -25,14 +32,6 @@ export const getFullNews = createAsyncThunk(
   }
 )
 
-export const getNews = createAsyncThunk(
-  "news",
-  async(id)=> {
-    const data = await fetch(`http://localhost:8080/${id}`)
-    const res = await data.json()
-    return res
-  }
-)
 
 
 export const newsSlice = createSlice({

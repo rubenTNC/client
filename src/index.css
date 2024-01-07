@@ -4,7 +4,6 @@ body {
   margin: 0;
   font-family: 'Playfair Display', serif;
   font-size: 16px;
-  background-color: #f4fbd6;;
 }
 
 code {
@@ -30,3 +29,19 @@ a{
   background-color: #fff;
 }
 
+.bg-color {
+  background-color: #e4e8d4;
+  min-height: 100vh;
+}
+
+.clamp {
+  overflow: hidden;
+      text-overflow: ellipsis;
+      display: -moz-box;
+      -moz-box-orient: vertical;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      line-clamp: 3;
+      box-orient: vertical;
+}

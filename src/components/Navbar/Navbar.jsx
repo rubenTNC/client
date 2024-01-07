@@ -6,9 +6,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Popap } from "../Popap/Popap";
+import OnlinePredictionIcon from '@mui/icons-material/OnlinePrediction';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -55,9 +55,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export function Navbar() {
   const isUser = useSelector((state) => state.auth.user);
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        position: "fixed",
+        top: "0px",
+        left: "0",
+        right: "0",
+        zIndex: 10,
+      }}
+    >
       <AppBar position="static" sx={{ borderRadius: { sm: "9px" } }}>
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Toolbar sx={{}}>
           <Typography
             variant="h5"
             noWrap
@@ -68,7 +77,10 @@ export function Navbar() {
               News+language
             </NavLink>
           </Typography>
-          <Search sx={{ mr: "100px" }}>
+          {
+            isUser && <OnlinePredictionIcon sx={{marginRight:"20px"}}/>
+          }
+          <Search sx={{ mr: "20px", minWidth: "250px", ":focus": {scale: "1.1"} }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -77,45 +89,7 @@ export function Navbar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{display: { xs: "none", sm: "block" } }}>
-              {isUser ? (
-                <Box sx={{ display: "flex", gap: "30px" }}>
-                  <Typography variant="h6">
-                    <div className="autch">
-                      <Link to={"/register"}>{isUser.username}</Link>{" "}
-                    </div>
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      background: "white",
-                      color: "black",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Выйти
-                  </Button>
-                </Box>
-              ) : (
-                <Box sx={{ display: "flex", gap: "30px" }}>
-                  <Typography variant="h6">
-                    <div className="autch">
-                      <Link to={"/register"}>Регистрация</Link>{" "}
-                    </div>
-                  </Typography>
-                  <Typography variant="h6">
-                    <div className="autch">
-                      <Link to={"/login"}>Войти</Link>
-                    </div>
-                  </Typography>
-                </Box>
-              )}
-            </Box>
-            <Box sx={{display: { xs: "block", sm: "none" } }}>
-             <Popap/>
-            </Box>
-          </Box>
+          <Popap />
         </Toolbar>
       </AppBar>
     </Box>

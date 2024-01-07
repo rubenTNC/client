@@ -7,11 +7,12 @@ import popupSlice from './features/popap/popupSlice';
 
 
 
+
 export const store = configureStore({
     reducer: {
         auth: authSlice,
         news: newsSlice,
-        popup: popupSlice
+        popup: popupSlice,
     },
 })
 

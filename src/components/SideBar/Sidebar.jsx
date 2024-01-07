@@ -5,7 +5,7 @@ import { Box, Typography } from '@mui/material'
 export const Sidebar = () => {
   return (
     <Box sx={{display: {xs:"none", sm: "block"}}}>
-      <Typography variant='h5'>Language</Typography>
+      <Typography sx={{margin: "0 auto"}} variant='h5'>Language</Typography>
     </Box>
   )
 }

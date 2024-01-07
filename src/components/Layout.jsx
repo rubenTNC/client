@@ -1,13 +1,28 @@
-import React from 'react'
-import { Navbar } from './Navbar/Navbar'
+import React from "react";
+import { Navbar } from "./Navbar/Navbar";
+import { Box } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteActive } from "../redux/features/popap/popupSlice";
 
-export const Layout = ({children}) => {
+export const Layout = ({ children }) => {
+  const dispatch = useDispatch();
+  const activ = useSelector((state) => state.popup.activ);
+
+  const handleToggle = () => {
+    dispatch(deleteActive());
+  };
   return (
     <React.Fragment>
-      <div className='container' >
-        <Navbar/>
-        {children}
-      </div>
+      <Box>
+      <Navbar />
+        <div className="bg-color" onClick={handleToggle}>
+          <Box sx={{ paddingTop: "40px" }}>
+            <div className="container">
+              {children}
+            </div>
+          </Box>
+        </div>
+      </Box>
     </React.Fragment>
-  )
-}
+  );
+};

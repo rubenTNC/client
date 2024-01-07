@@ -14,21 +14,26 @@ export const News = ({ props }) => {
           border: "1px solid black",
           padding: "10px 15px",
           borderRadius: "10px",
-          boxShadow: 2
+          boxShadow: 2,
         }}
       >
         <Box>
           <Link to={`/${props._id}`}>
             <Typography
-              sx={{ fontSize: { lg: "23px", sm: "18px", xs: "14px" } }}
+              sx={{
+                fontSize: { lg: "20px", sm: "18px", xs: "14px" },
+                ":hover": {
+                  color: "primary.main",
+                },
+              }}
             >
-              {props.title}
+              <div className="clamp">{props.title}</div>
             </Typography>
           </Link>
           <Box
             sx={{
               display: { sm: "flex", xs: "none" },
-              gap: "20px",
+              gap: "12px",
               flexWrap: "wrap",
               marginTop: "15px",
             }}

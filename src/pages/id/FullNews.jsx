@@ -13,7 +13,7 @@ export function FullNews({ props }) {
     dispatch(getFullNews(id));
   }, []);
   return (
-    <Box sx={{ display: "flex", justifyContent: "center" }}>
+    <Box sx={{ display: "flex",  justifyContent: "center" }}>
       {news && (
         <Box
           sx={{

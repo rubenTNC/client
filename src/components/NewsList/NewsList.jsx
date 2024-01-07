@@ -9,9 +9,15 @@ export const NewsList = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.news.loading);
   const news = useSelector((state) => state.news.newsList);
+  let count = 10
+
+
+
+
+
   useEffect(() => {
-    dispatch(getNewsAll());
-  }, [dispatch]);
+    dispatch(getNewsAll(count));
+  }, [dispatch, count]);
 
   return (
     <Box
