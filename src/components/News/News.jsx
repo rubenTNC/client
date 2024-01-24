@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useId } from "react";
 import { Box, Typography, ImageListItem } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const News = ({ props }) => {
   return (
-    <div className="news-bg">
+    <div className="news-item news-bg">
       <Box
         key={props._id}
         sx={{

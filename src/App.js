@@ -10,6 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { getMe } from "./redux/features/auth/authSlice.js";
 import { MyPage } from "./pages/id/MyPage.jsx";
+import { AddWord } from "./pages/AddWord.jsx";
+import { MyWords } from "./pages/MyWords.jsx";
 
 
 function App() {
@@ -46,6 +48,8 @@ function App() {
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="myPage" element={<MyPage />} />
+        <Route path="addword" element={<AddWord />} />
+        <Route path="myWords" element={<MyWords />} />
       </Routes>
       <ToastContainer position="top-center" draggable="100" />
     </Layout>

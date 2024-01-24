@@ -4,7 +4,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 const initialState = {
   loading: false,
   newsList: null,
-  fullNews: null
+  fullNews: null,
+  quantityNews: 10
 }
 
 export const getNewsAll = createAsyncThunk(
@@ -37,7 +38,11 @@ export const getFullNews = createAsyncThunk(
 export const newsSlice = createSlice({
   name: "news",
   initialState,
-  reducers: {},
+  reducers: {
+    incrementQuantityNews: (state) => {
+      state.quantityNews += 10
+    }
+  },
   extraReducers: (buider) => {
     buider
         .addCase(getNewsAll.pending, (state, action) => {
@@ -59,3 +64,5 @@ export const newsSlice = createSlice({
 })
 
 export default newsSlice.reducer
+
+export const { incrementQuantityNews } = newsSlice.actions

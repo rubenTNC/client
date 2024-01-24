@@ -16,7 +16,7 @@ export const Layout = ({ children }) => {
       <Box>
       <Navbar />
         <div className="bg-color" onClick={handleToggle}>
-          <Box sx={{ paddingTop: "40px" }}>
+          <Box sx={{ paddingTop: "56px", marginTop:"50px" }}>
             <div className="container">
               {children}
             </div>

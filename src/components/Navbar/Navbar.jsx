@@ -9,6 +9,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useSelector } from "react-redux";
 import { Popap } from "../Popap/Popap";
 import OnlinePredictionIcon from '@mui/icons-material/OnlinePrediction';
+import React, { useMemo } from "react";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -40,7 +41,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: "100%",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     [theme.breakpoints.up("sm")]: {
@@ -54,6 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export function Navbar() {
   const isUser = useSelector((state) => state.auth.user);
+  // const popap = React.memo(() => Popap)
   return (
     <Box
       sx={{
@@ -89,7 +90,7 @@ export function Navbar() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          <Popap />
+          <Popap/>
         </Toolbar>
       </AppBar>
     </Box>

@@ -13,7 +13,11 @@ export const Popap = () => {
   const user = useSelector((state) => state.auth.user);
 
 
-  const city = JSON.parse(localStorage.getItem("position")).city
+  let city;
+
+  if (localStorage.getItem("position")) {
+    city = JSON.parse(localStorage.getItem("position")).city
+  }
 
   const handleToggle = () => {
     dispatch(toggleActive());
@@ -49,7 +53,16 @@ export const Popap = () => {
     {
       name: "Главная",
       url: "/",
+    },
+    {
+      name: "Добавить слово",
+      url: "/addword"
+    },
+    {
+      name : "Мои слова",
+      url: "/myWords"
     }
+
   ]
 
   const menuItems = user ? userMenuItems : notUserMenuItems
@@ -106,7 +119,7 @@ export const Popap = () => {
           onClick={handleToggle}
         />
         {
-          city && (
+          city && user && (
             <Typography variant="h6">{city}</Typography>
           )
         }
